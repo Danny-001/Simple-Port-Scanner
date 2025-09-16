@@ -16,3 +16,13 @@ print("-" * 50)
 print("Scanning target: " + target)
 print("Time started: " + str(datetime.now()))
 print("-" * 50)
+
+
+try:
+    for port in range(1, 65535):  # Scan all ports from 1 to 65535
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  # Create a TCP socket
+        socket.setdefaulttimeout(1)  # Set a timeout of 1 second
+        result = s.connect_ex((target, port))  # Connect to the target on the specified port
+        if result == 0:  # If the connection is successful
+            print(f"Port {port} is open")
+        s.close()  # Close the socket

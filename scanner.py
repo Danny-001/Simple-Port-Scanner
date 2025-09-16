@@ -26,3 +26,17 @@ try:
         if result == 0:  # If the connection is successful
             print(f"Port {port} is open")
         s.close()  # Close the socket
+
+except KeyboardInterrupt:
+    print("\nExiting program.")
+    sys.exit()
+
+except socket.gaierror:
+    print("Hostname could not be resolved.")
+    sys.exit()
+
+except socket.error:
+    print("Couldn't connect to server.")
+    sys.exit()
+
+    
